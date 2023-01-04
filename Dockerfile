@@ -6,7 +6,7 @@ RUN apt update && apt install -y \
     ssh wget unzip vim curl
 RUN wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O /ngrok-stable-linux-amd64.zip\
     && cd / && unzip ngrok-stable-linux-amd64.zip \
-    && chmod 755 ngrok
+    && chmod +x ngrok
 RUN mkdir /run/sshd \
     && echo "/ngrok tcp --authtoken ${NGROK_TOKEN} --region ${REGION} 22 &" >>/openssh.sh \
     && echo "sleep 5" >> /openssh.sh \
